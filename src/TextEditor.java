@@ -21,6 +21,8 @@ public class TextEditor extends JFrame implements ActionListener{
     JButton saveButton = new JButton("Spara");
     JButton printButton = new JButton("Skriv ut");
     JButton exitButton = new JButton("Avsluta");
+    JComboBox comboBox;
+    String colors[] = { "röd", "blå", "gul" };
 
     JPanel topRowPanel = new JPanel();
     JPanel textAreaPanel = new JPanel();
@@ -31,9 +33,14 @@ public class TextEditor extends JFrame implements ActionListener{
         scroll.setVerticalScrollBarPolicy ( ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS );
         scroll.setHorizontalScrollBarPolicy ( ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS );
 
+        comboBox = new JComboBox(colors);
+        comboBox.setSelectedIndex(-1);
+
+
         topRowPanel.setLayout(new GridLayout(1, 6));
         topRowPanel.add(jLabel);
-        topRowPanel.add(textField);
+//        topRowPanel.add(textField);
+        topRowPanel.add(comboBox);
         topRowPanel.add(openButton);
         topRowPanel.add(saveButton);
         topRowPanel.add(printButton);
@@ -49,6 +56,7 @@ public class TextEditor extends JFrame implements ActionListener{
         saveButton.addActionListener(this);
         printButton.addActionListener(this);
         exitButton.addActionListener(this);
+        comboBox.addActionListener(this);
 
         pack();
         setVisible(true);
